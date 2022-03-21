@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 import App from './App';
-import Header from './components/common/header';
-import Footer from './components/common/footer';
-import Banner from './components/common/banner';
+
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
-  <Header/>
-  <Banner/>
-  <Footer/>
+  <BrowserRouter>
+  <App/>
+  </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

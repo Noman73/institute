@@ -1,9 +1,35 @@
 import React ,{Component} from 'react';
-
+import {Link} from "react-router-dom";
+import Login from '../login/login';
 
 class Header extends Component{
+	
+	constructor(props){
+		super(props);
+		this.state={
+			show:true
+		}
+		
+	}
+	componentDidMount(){
+		setInterval(() => {
+			this.setState({show:true})
+		}, 2000);
+	}
+	modalOpen(){
+		console.log('fired');
+		this.setState({show:true})
+		
+	}
+	closeModal(){
+		this.setState({
+			show:false
+		})
+	}
 	render(){
+     console.log('rendered')
 		return (
+
 			<div>
 				<div class="header header-transparent dark-text">
 				<div class="container">
@@ -98,7 +124,7 @@ class Header extends Component{
 							</ul>
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<li>
-									<a href="#" class="alio_green" data-toggle="modal" data-target="#login">
+									<a onClick={() => this.modalOpen()} className="alio_green">
 										<i class="fas fa-sign-in-alt mr-1"></i><span class="dn-lg">Sign In</span>
 									</a>
 								</li>
@@ -111,7 +137,9 @@ class Header extends Component{
 				</div>
 			</div>
 			<div class="clearfix"></div>
+			<Login show={this.state.show} />
 		</div>
+		
 			)
 	}
 }
