@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
 import {Link} from "react-router-dom";
 import Login from '../login/login';
-
+import MainRoute from '../../App';
 class Header extends Component{
 	
 	constructor(props){
@@ -137,9 +137,7 @@ class Header extends Component{
 				</div>
 			</div>
 			<div class="clearfix"></div>
-			<Login show={this.state.show} />
 		</div>
-		
 			)
 	}
 }
