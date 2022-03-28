@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import {Link} from "react-router-dom";
 import Login from '../login/login';
 import MainRoute from '../../App';
+import axios from 'axios';
 class Header extends Component{
 	
 	constructor(props){
@@ -12,9 +13,7 @@ class Header extends Component{
 		
 	}
 	componentDidMount(){
-		setInterval(() => {
-			this.setState({show:true})
-		}, 2000);
+		
 	}
 	modalOpen(){
 		console.log('fired');
@@ -27,7 +26,6 @@ class Header extends Component{
 		})
 	}
 	render(){
-     console.log('rendered')
 		return (
 
 			<div>
@@ -124,9 +122,9 @@ class Header extends Component{
 							</ul>
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<li>
-									<a onClick={() => this.modalOpen()} className="alio_green">
+									<Link to="/login" className="alio_green">
 										<i class="fas fa-sign-in-alt mr-1"></i><span class="dn-lg">Sign In</span>
-									</a>
+									</Link>
 								</li>
 								<li class="add-listing theme-bg">
 									<a href="signup.html" class="text-white">Get Started</a>

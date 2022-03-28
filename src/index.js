@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 import App from './App';
-
+import axios from 'axios';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter } from 'react-router-dom';
+axios.defaults.baseURL = 'http://localhost/institute/public/api/';
+axios.defaults.headers.common['Authorization'] = 'Bearer '+localStorage.getItem('o_sho_auth_token_xyz');
 ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>

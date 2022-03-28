@@ -6,19 +6,38 @@ import Header from './components/common/header';
 import Footer from './components/common/footer';
 import Banner from './components/common/banner';
 import Login from './components/login/login';
-import SignUp from './components/signup/signup';
-function App() {
-  return (
-    <>
-   <Header/>
-    <Routes>
-        <Route path="/" element={<Banner />} />
-        <Route path="/login" element={<Login show={true} />} />
-        <Route path="/signup" element={<SignUp/>} />
-    </Routes>
-    <Footer/>
-    </>
-  );
-}
+import Profile from './components/signup/signup';
+import React from 'react';
+import axios from "axios";
+class App extends React.Component {
 
+  state={
+    user:{}
+  }
+
+  componentDidMount(){
+    axios.get('/auth/me')
+		.then(res=>{
+		console.log(res)
+    this.setState({user:res.data})
+		})
+  }
+
+  setUser(){
+    this.componentDidMount();
+  }
+  render(){
+  return (
+      <>
+       <Header user={this.state.user} setUser={()=>{this.setUser()}} />
+        <Routes>
+            <Route path="/" element={<Banner />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile user={this.state.user} setUser={()=>{ this.setUser()}} />} />
+        </Routes>
+        <Footer/>
+      </>
+    );
+  }
+}
 export default App;

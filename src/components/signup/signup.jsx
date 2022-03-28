@@ -1,6 +1,24 @@
 import React ,{Component} from "react";
-
+import axios from 'axios'
 class SignUp extends Component{
+
+	state={
+		bio:'',
+		education:''
+	}
+	componentDidMount(){
+		console.log('profile is here');
+		console.log(this.state)
+		
+	}
+	submitRequest=(e)=>{
+		console.log(123456);
+		e.preventDefault()
+		axios.post('/institute/user/edit',{bio:this.state.bio,education:this.state.education})
+		.then(res=>{
+			console.log(res);
+		});
+	}
     render(){
         return (
         <>
@@ -8,10 +26,10 @@ class SignUp extends Component{
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-xl-7 col-lg-8 col-md-12 col-sm-12">
-							<form>
+							<form onSubmit={this.submitRequest}>
 								<div class="crs_log_wrap">
 									<div class="crs_log__thumb">
-										<img src="assets/img/banner-2.jpg" class="img-fluid" alt="" />
+										<img  src="assets/img/banner-2.jpg" class="img-fluid" alt="" />
 									</div>
 									<div class="crs_log__caption">
 										<div class="rcs_log_123">
@@ -23,26 +41,30 @@ class SignUp extends Component{
 												<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
 													<div class="form-group">
 														<label>First Name</label>
-														<input type="text" class="form-control" placeholder="First Name" />
+														<input disabled type="text" class="form-control" placeholder="First Name" value={this.props.user.first_name}/>
 													</div>
 												</div>
 												<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
 													<div class="form-group">
 														<label>Last Name</label>
-														<input type="text" class="form-control" placeholder="Last Name" />
+														<input type="text" disabled class="form-control" placeholder="Last Name" value={this.props.user.last_name}/>
 													</div>
 												</div>
 											</div>
 											<div class="form-group">
 												<label>Email</label>
-												<input type="text" class="form-control" placeholder="support@themezhub.com" />
+												<input disabled type="text" class="form-control" placeholder="support@themezhub.com" value={this.props.user.email}/>
 											</div>
 											<div class="form-group">
-												<label>Password</label>
-												<input type="text" class="form-control" placeholder="*******" />
+												<label>Bio</label>
+												<input type="text" class="form-control" placeholder="Write About You..." onChange={(e)=>{this.setState({bio:e.target.value})}}/>
 											</div>
 											<div class="form-group">
-												<button type="button" class="btn full-width btn-md theme-bg text-white">Sign Up</button>
+												<label>Education</label>
+												<input type="text" class="form-control" placeholder="Write your Qalifications..." onChange={(e)=>{this.setState({education:e.target.value})}}/>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn full-width btn-md theme-bg text-white">Update</button>
 											</div>
 										</div>
 										<div class="rcs_log_125">
