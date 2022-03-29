@@ -6,10 +6,16 @@ class SignUp extends Component{
 		bio:'',
 		education:''
 	}
+	styles={
+		width:'80px',
+		height:'80px',
+		borderRadius:'50%'
+	}
 	componentDidMount(){
 		console.log('profile is here');
-		console.log(this.state)
-		
+		// console.log(this.props.user.institute[0].bio)
+		this.props.setUser();
+	    
 	}
 	submitRequest=(e)=>{
 		console.log(123456);
@@ -33,10 +39,10 @@ class SignUp extends Component{
 									</div>
 									<div class="crs_log__caption">
 										<div class="rcs_log_123">
-											<div class="rcs_ico"><i class="fas fa-user"></i></div>
+											<div class="rcs_ico"><img style={this.styles} src={(axios.defaults.baseURL).substring(0, axios.defaults.baseURL.length - 4)+'/storage/images/user/'+this.props.user.photo} alt="" /></div>
 										</div>
 										<div class="rcs_log_124">
-											<div class="Lpo09"><h4>Login Your Account</h4></div>
+											<div class="Lpo09"><h4>Update Your Profile</h4></div>
 											<div class="form-group row mb-0">
 												<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
 													<div class="form-group">
@@ -57,11 +63,11 @@ class SignUp extends Component{
 											</div>
 											<div class="form-group">
 												<label>Bio</label>
-												<input type="text" class="form-control" placeholder="Write About You..." onChange={(e)=>{this.setState({bio:e.target.value})}}/>
+												<input type="text" class="form-control" placeholder="Write About You..."  onChange={(e)=>{this.setState({bio:e.target.value})}}/>
 											</div>
 											<div class="form-group">
 												<label>Education</label>
-												<input type="text" class="form-control" placeholder="Write your Qalifications..." onChange={(e)=>{this.setState({education:e.target.value})}}/>
+												<input type="text" class="form-control" placeholder="Write your Qalifications..."  onChange={(e)=>{this.setState({education:e.target.value})}}/>
 											</div>
 											<div class="form-group">
 												<button type="submit" class="btn full-width btn-md theme-bg text-white">Update</button>

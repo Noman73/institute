@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
 	}
 	componentDidMount(){
 	}
-	 login=(e)=>{
+	login=(e)=>{
 		e.preventDefault()
 		axios.post('auth/login',{email:this.state.email,password:this.state.password})
 		.then((response)=>{
@@ -26,9 +26,16 @@ class LoginForm extends React.Component {
 			}
 		})
 	}
+	setUser=()=>{
+		axios.post('/institute/user')
+		.then(res=>{
+			console.log(res);
+		});
+	}
 	render(){
 		if(this.state.isAuth){
-			return <Navigate replace to="/profile"/>
+			// this.user();
+			return <Navigate replace to="/profile" />
 		}
 		return (
 			<>
@@ -76,6 +83,5 @@ class LoginForm extends React.Component {
 	}
 
 }
-
 
 export default LoginForm
