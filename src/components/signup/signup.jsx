@@ -26,6 +26,10 @@ class SignUp extends Component{
 		});
 	}
     render(){
+
+		if(!this.props.isLoaded){
+				return <section/>
+		}
         return (
         <>
             <section>

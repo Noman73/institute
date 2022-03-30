@@ -166,7 +166,30 @@ $(function() {
 
 	// Metis Menu
 	$('#side-menu').metisMenu();
-	
+	$("#root").on('click',"a[href$='/dashboard']",function(){
+		initMetisMenu();
+	})
+	function initMetisMenu(){
+		$('#side-menu').metisMenu();
+	}
+
+	function checkEndpoint(){
+		let cUrl=window.location.href;
+		console.log(cUrl);
+		let urlArr=cUrl.split('/')
+		let endpoint=urlArr[urlArr.length-1];
+		console.log(endpoint)
+		if(endpoint=='dashboard'){
+			console.log('12345678')
+			setTimeout(() => {
+			$('#side-menu').metisMenu();
+				
+			}, 500);
+		}
+	}
+	$(document).ready(function(){
+		checkEndpoint();
+	})
 	// Tooltip
 	$('[data-toggle="tooltip"]').tooltip();
 	

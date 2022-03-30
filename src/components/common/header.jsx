@@ -118,7 +118,7 @@ class Header extends Component{
 										<li><a href="forgot.html">Forgot</a></li>
 									</ul>
 								</li>
-								<li><a href="dashboard.html">Dashboard</a></li>
+								<li><Link to="/dashboard">Dashboard</Link></li>
 							</ul>
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<li>
