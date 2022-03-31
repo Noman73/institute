@@ -17,8 +17,11 @@ class CourseForm extends React.Component {
             this.setState({category:res.data});
         })
     }
-    render(){
 
+    handleInputChange = (inputValue) => {
+        //get the character entered by user here in inputValue
+  };
+    render(){
         return (
             <section>
                 <div class="container">
@@ -32,7 +35,7 @@ class CourseForm extends React.Component {
                                             
                                             <div class="form-group">
                                                 <label>Category</label>
-                                                <SelectInput category={this.state.category}/>
+                                                <SelectInput category={this.state.category} changeInput={this.handleInputChange()}/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Title</label>

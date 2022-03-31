@@ -5,7 +5,7 @@ import App from './App';
 import axios from 'axios';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter } from 'react-router-dom';
-axios.defaults.baseURL = 'http://localhost/institute/public/api/';
+axios.defaults.baseURL = 'http://localhost/ongsho/public/api/';
 axios.defaults.headers.common['Authorization'] = 'bearer '+localStorage.getItem('o_sho_auth_token_xyz');
 ReactDOM.render(
   <React.StrictMode>
